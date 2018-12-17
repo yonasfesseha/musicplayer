@@ -2,6 +2,7 @@
 // Use this TAB as an example to copy and paste where-ever you need text
 
 void text() {
+  fill(#81937D);
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
   textFont(titleFont, 50); //Change the number until it fits, largest font size

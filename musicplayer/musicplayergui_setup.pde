@@ -8,7 +8,7 @@ void musicPlayerGUI_Setup() {
   ellipse(width*1/2, height*1/2, width*2/3, width*2/3); //Outer
   strokeWeight(10); //changes the thickness of the line
   fill(random(255), random(255), random(255));
-  ellipse(width*1/2, height*1/2, width*1/20-width*1/30, width*1/2-width*1/30); // Middle
+  ellipse(width*1/2, height*1/2, width*1/2-width*1/3, width*1/2-width*1/3); // Middle
   strokeWeight(1); //resets default
   fill(255);
   ellipse(width*1/2, height*1/2, width*1/2-width*1/10, width*1/2-width*1/10); //Inside

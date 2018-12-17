@@ -1,8 +1,21 @@
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+AudioPlayer song1;
+Minim  minim;
+
+
+
 //Gloabal Variables
 color white = #FFFFFF;
 
+
 void setup () {
   background(#A9B2A7);
+  background(#81937D);
   size(500, 600);
   //Using WIDTH and HEIGHT Key Varaibles, communciaiton to the display Geometry
   //String[] fontList = PFont.list(); //To list all fonts available on system
@@ -20,7 +33,8 @@ void draw() {
   
 }
 
-void mouseClicked() { 
+void mouseClicked() {
+  
   quitButtonMouseClicked();
   musicPlayerButtons();
 }

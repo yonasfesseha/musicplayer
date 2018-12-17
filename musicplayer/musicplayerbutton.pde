@@ -12,6 +12,12 @@ void musicPlayerButtons() {
     }
     println(playButton);
   }
+  if ( song1.isplaying() ) {
+      song1.pause();
+      song1.rewind();
+    } else {//song is not playing
+      song1.rewind();
+    }
  
   
     //Next

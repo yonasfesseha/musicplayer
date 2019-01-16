@@ -4,8 +4,10 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-AudioPlayer song1;
-Minim  minim;
+AudioPlayer song0;
+Minim minim;
+int numberofsong =1;
+
 
 
 

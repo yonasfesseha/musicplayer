@@ -3,17 +3,25 @@ class snake{
   PVector vel;
   ArrayList<PVector> hist;
   int len;
+  int movex = 0;
+  int movey = 0;
   
   snake(){
      pos = new PVector(0,0);
      vel = new PVector();
      hist = new ArrayList<PVector>();
-     len = 10;
+     len = 0;
   }
   void update() {
     hist.add(pos.copy());
     pos.x += vel.x*gride;
     pos.y += vel.y*gride;
+    moveX = int(vel.x);
+    moveY = int(vel.y);
+    
+    pos.x = (pos.x + width) % width;
+    pos.y = (pos.y + height) % height;
+    
     if (hist.size() > len) {
       hist.remove(0);
     }
@@ -28,18 +36,16 @@ class snake{
   }
 }
 void keyPressed() {
- if(keyCode == LEFT) {
- if (key == LEFT) {
+ if(keyCode == LEFT && snake.moveX !=1) { {
    snake.vel.x = -1;
    snake.vel.y = 0;
- } else if (keyCode == RIGHT) {
+ } else if (keyCode == RIGHT && snake.moveX != -1) {
    snake.vel.x = 1;
    snake.vel.y = 0;
- }
- if (keycode == up) {
+ } else if (keycode == up &&snake.moveY !=1) {
    snake.vel.y = 1;
    snake.vel.x = 0;
- } else if (keyCode == DOWN) {
+ } else if (keyCode == DOWN && snake.moveY != -1) {
    snake.vel.y = 1;
    snake.vel.x = 0;
  }
@@ -55,8 +61,3 @@ void keyPressed() {
       
       
       
-      
-
-void keyPressed(){
- 
-}

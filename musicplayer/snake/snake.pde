@@ -1,63 +1,53 @@
-class snake{
-  PVector pos;
-  PVector vel;
-  ArrayList<PVector> hist;
-  int len;
-  int movex = 0;
-  int movey = 0;
-  
-  snake(){
-     pos = new PVector(0,0);
-     vel = new PVector();
-     hist = new ArrayList<PVector>();
-     len = 0;
-  }
-  void update() {
-    hist.add(pos.copy());
-    pos.x += vel.x*gride;
-    pos.y += vel.y*gride;
-    moveX = int(vel.x);
-    moveY = int(vel.y);
-    
-    pos.x = (pos.x + width) % width;
-    pos.y = (pos.y + height) % height;
-    
-    if (hist.size() > len) {
-      hist.remove(0);
+int grid = 20; //How big each grid square will be
+PVector food;
+int speed = 10;
+boolean dead = true;
+int highscore = 0;
+Snake snake;
+
+void setup() {
+  size(500, 500);
+  snake = new Snake();
+  food = new PVector();
+  newFood();
+  //frameRate(8);
+}
+
+void draw() {
+  background(0);
+  fill(255);
+  if (!dead) {
+
+    if (frameCount % speed == 0) {
+      snake.update();
     }
-  }
-  void show() {
-    noStroke();
-    fill(125);
-    rect(pos.x, pos.y, grid, grid)
-    for (PVector p : hist) {
-      rect(p.x, p.y, grid, grid);
-    }
+    snake.show();
+    snake.eat();
+    fill(255, 0, 0);
+    rect(food.x, food.y, grid, grid);
+    textAlign(LEFT);
+    textSize(15);
+    fill(255);
+    text("Score: " + snake.len, 10, 20);
+  } else {
+    textSize(25);
+    textAlign(CENTER, CENTER);
+    text("Snake Game\nClick to start" + "\nHighscore: " + highscore, width/2, height/2);
   }
 }
-void keyPressed() {
- if(keyCode == LEFT && snake.moveX !=1) { {
-   snake.vel.x = -1;
-   snake.vel.y = 0;
- } else if (keyCode == RIGHT && snake.moveX != -1) {
-   snake.vel.x = 1;
-   snake.vel.y = 0;
- } else if (keycode == up &&snake.moveY !=1) {
-   snake.vel.y = 1;
-   snake.vel.x = 0;
- } else if (keyCode == DOWN && snake.moveY != -1) {
-   snake.vel.y = 1;
-   snake.vel.x = 0;
- }
+
+void newFood() {
+  food.x = floor(random(width));
+  food.y = floor(random(height));
+  food.x = floor(food.x/grid) * grid;
+  food.y = floor(food.y/grid) * grid;
 }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
+void mousePressed() {
+  if (dead) {
+    snake = new Snake();
+    newFood();
+    speed = 10;
+    dead = false;
+  }
+}
